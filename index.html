@@ -1,23 +1,59 @@
-<!-- This is a first example of using a template -->
+<!DOCTYPE html>
+<html lang="en">
 
 <head>
+  <title>Gallery of animals</title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<!-- include our libraries and css files -->
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+  <link href="css/carlin.css" rel="stylesheet">
 
-<script src="js/jquery-2.1.4.min.js"></script>
-<script src="js/handlebars-v3.0.3.js"></script>
+  <script src="js/jquery-2.2.2.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/handlebars-v4.0.5.js"></script>
 
-<script src="js/bootstrap.min.js"></script>
-<script src="AnimalsData.js"></script>
-<script src="assignment.js"></script>
+  <script src="js/AnimalsData.js"></script>
+  <script src="js/carlin.js"></script>
 
-<link href="css/bootstrap.css" rel="stylesheet">
-<link href="assignment.css" rel="stylesheet">
-
+  <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+  <![endif]-->
 </head>
 
 <body>
+  <!-- main container -->
+  <div class="container">
+    <div class="page-header">
+      <h1>A list of animals</h1>
+    </div>
+    <!-- nav menu -->
+    <ul class="nav nav-tabs nav-justified">
+      <li class="active" id="categories-tab"><a href="#">Animal categories</a></li>
+      <li><a href="#" id="id2">Dos</a></li>
+      <li><a href="#" id="id3">Tres</a></li>
+    </ul> <!-- / nav menu -->
 
-    <!-- put your HTML here -->
+    <div id="content" class="container">
+    </div>
+  </div> <!-- / main container -->
+
+  <!-- Templates -->
+  <!-- Animal categories template -->
+  <script id="categories-template" type="text/x-handlebars-template">
+    <div class="row">
+        {{#each category}}
+        <div class="col-xs-12 col-md-4">
+          <h4>{{name}}</h4>
+          <p>{{animals.length}} animals.</p>
+        </div> <!-- / col -->
+        {{/each}}
+    </div> <!-- / row -->
+  </script> <!-- / Animal categories template -->
 
 </body>
+</html>
