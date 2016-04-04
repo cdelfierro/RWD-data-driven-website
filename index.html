@@ -33,12 +33,12 @@
     </div>
     <!-- nav menu -->
     <ul class="nav nav-tabs nav-justified">
-      <li class="active" id="categories-tab"><a href="#">Animal categories</a></li>
+      <li class="active" id="categories-tab"><a href="#">Categories</a></li>
       <li><a href="#" id="id2">Dos</a></li>
       <li><a href="#" id="id3">Tres</a></li>
     </ul> <!-- / nav menu -->
 
-    <div id="content" class="container">
+    <div id="content" class="main container">
     </div>
   </div> <!-- / main container -->
 
@@ -46,12 +46,16 @@
   <!-- Animal categories template -->
   <script id="categories-template" type="text/x-handlebars-template">
     <div class="row">
-        {{#each category}}
-        <div class="col-xs-12 col-md-4">
-          <h4>{{name}}</h4>
-          <p>{{animals.length}} animals.</p>
+        <div class="col-xs-12 col-md-12">
+          <p>Here is a list with the categories in wich each animal belongs.</p>
+          <ul class="list-group">
+            {{#each category}}
+            <li class="list-group-item">{{name}}
+              <span class="badge">{{animals.length}}</span>
+            </li>
+            {{/each}}
+          </ul>
         </div> <!-- / col -->
-        {{/each}}
     </div> <!-- / row -->
   </script> <!-- / Animal categories template -->
 
