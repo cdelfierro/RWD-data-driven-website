@@ -1,3 +1,29 @@
+h3 {
+    text-align: center;
+}
+
 .main {
     margin-top: 18px;
+}
+
+.thumbnail {
+    padding: 0;
+    border-radius: 10px;
+    overflow: hidden;
+    height: 200px;
+    position: relative;
+    border: none;
+}
+
+.thumbnail img {
+    width: auto;
+    min-width: 100%;
+    max-width: none;
+    height: 100%;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    -webkit-transform: translate(-50%, -50%);
+        -ms-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
 }
