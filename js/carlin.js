@@ -4,8 +4,8 @@
 var categories_template, animals_template, photos_template;
 
 // current variables to sabe between the clics of differents sections
-var current_category = animals_data.category[0];
-var current_animal = current_category.animals[0];
+var current_category = null;
+var current_animal = null;
 
 function show_template(template, data) {
     var html = template(data);
@@ -26,7 +26,6 @@ $(document).ready(function() {
 
     // Clicking in the categories tab shows all the categories.
     $("#categories-tab").click(function() {
-
         show_template(categories_template, animals_data);
         $(".nav-tabs .active").removeClass("active");
         $("#categories-tab").addClass("active");
@@ -35,15 +34,31 @@ $(document).ready(function() {
         $(".list-group-item").click(function() {
             var index = $(this).data("id");
             current_category = animals_data.category[index];
-            show_template(animals_template, current_category);
-            console.log(current_category);
+            $("#gallery-tab").click();
+        });
+    });
 
-            // Clicking the animal thumbnail carry us to the image and description.
-            $(".animal-thumb").click(function() {
-                var index = $(this).data("id");
-                current_animal = current_category.animals[index];
-                show_template(photos_template, current_animal);
-                console.log(current_animal);
+    // Clicking in the gallery tab shows the gallery of the current category.
+    $("#gallery-tab").click(function() {
+        console.log(current_category);
+        if (current_category) {
+            show_template(animals_template, current_category);
+        } else {
+            $("#categories-tab").click();
+        }
+        $(".nav-tabs .active").removeClass("active");
+        $("#gallery-tab").addClass("active");
+
+        // Clicking the animal thumbnail carry us to the image and description.
+        $(".animal-thumb").click(function() {
+            console.log(current_animal);
+            var index = $(this).data("id");
+            current_animal = current_category.animals[index];
+            show_template(photos_template, current_animal);
+
+            // Clicking the photo carry us back to the gallery.
+            $(".animal-photo").click(function() {
+                $("#gallery-tab").click();
             });
         });
     });
