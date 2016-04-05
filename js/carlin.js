@@ -1,7 +1,7 @@
 // javascript code
 
 // variables for all templates
-var categories_template, animals_template;
+var categories_template, animals_template, photos_template;
 
 // current variables to sabe between the clics of differents sections
 var current_category = animals_data.category[0];
@@ -21,6 +21,9 @@ $(document).ready(function() {
     source = $("#animals-template").html();
     animals_template = Handlebars.compile(source);
 
+    source = $("#photos-template").html();
+    photos_template = Handlebars.compile(source);
+
     // Clicking in the categories tab shows all the categories.
     $("#categories-tab").click(function() {
 
@@ -29,11 +32,19 @@ $(document).ready(function() {
         $("#categories-tab").addClass("active");
 
         // Clicking in the categories listed shows the animnals in the category
-        $(".list-group-item").click(function (){
+        $(".list-group-item").click(function() {
             var index = $(this).data("id");
             current_category = animals_data.category[index];
             show_template(animals_template, current_category);
             console.log(current_category);
+
+            // Clicking the animal thumbnail carry us to the image and description.
+            $(".animal-thumb").click(function() {
+                var index = $(this).data("id");
+                current_animal = current_category.animals[index];
+                show_template(photos_template, current_animal);
+                console.log(current_animal);
+            });
         });
     });
 
