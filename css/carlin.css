@@ -13,6 +13,7 @@ h3 {
     height: 200px;
     position: relative;
     border: none;
+    margin-bottom: 5px;
 }
 
 .thumbnail img {
